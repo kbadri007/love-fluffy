@@ -1,14 +1,11 @@
 {
-  "name": "static-site-gulp-webpack-boilerplate",
-  "description": "Drop-in Gulp and Webpack tasks for static site development.",
+  "name": "love-fluffy",
+  "description": "A quick simple web game using plain JavaScript and GSAP",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "Michael Schwobe <mschwobe@gmail.com> (http://michaelschwobe.com)",
-  "repository": "michaelschwobe/static-site-gulp-webpack-boilerplate",
-  "bugs": {
-    "url": "https://github.com/michaelschwobe/static-site-gulp-webpack-boilerplate/issues"
-  },
-  "homepage": "https://github.com/michaelschwobe/static-site-gulp-webpack-boilerplate#readme",
+  "author": "Jason Yeung <contact@jasonyeung.me>",
+  "repository": "jayyeung/Love-Fluffy",
+  "homepage": "https://github.com/jayyeung/Love-Fluffy",
   "keywords": [
     "autoprefixer",
     "babel",
