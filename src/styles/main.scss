@@ -1,0 +1,124 @@
+// NORMALIZE
+@import 'normalize.css/normalize';
+
+// GOOGLE FONTS
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Raleway:500,700|Roboto+Mono');
+
+// BASE
+*, *:before, *:after {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+:root {
+	font-family: 'Raleway', sans-serif;
+	font-size: 18px;
+	line-height: 1.25;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+
+	@media (max-width: 1024px) { font-size: 14px; }
+	@media (max-width: 700px) { font-size: 12px; }
+}
+
+// SVG
+#container {
+	padding: 3rem 1rem;
+
+	height: 100vh;
+	overflow: hidden;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+#title, #subtitle {
+	margin: 0 0 1rem;
+
+	font-family: 'Noto Serif', serif;
+	font-size: 2.5rem;
+	font-weight: normal;
+	
+	text-transform: none;
+	color: #C0392B;
+}
+
+#instructions {
+	margin-bottom: 1.5em;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	color: #EB6C5E;
+	text-transform: uppercase;
+}
+
+#timer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	left: 0; right: 0;
+	top: 0; bottom: 0;
+	z-index: -999;
+
+	#progress-bar {
+		position: absolute;
+		left: 0;
+		top: 0; bottom: 0;
+	
+		background: rgba(black, 0.05);
+	}
+
+	&-text {
+		font-family: 'Roboto Mono';
+		font-size: 12rem;
+		opacity: 0.075;
+
+		@media (max-width: 1024px) {
+			font-size: 25vw;
+		}
+	}
+}
+
+#heart {
+	overflow: visible;
+	cursor: move;
+
+	box-sizing: content-box;
+	padding: 0.5em;
+}
+
+#counter {
+	margin: 15vh 0 1rem;
+
+	@media (max-width: 500px) {
+		margin: 10vh 0 1rem;
+	}
+}
+
+#cat {
+	transform: translateX(-1.5em);
+	overflow: visible;
+}
+
+// UTILITIES
+.button {
+	@extend #instructions;
+	font-size: 0.75em;
+	padding: 1em 2em;
+	border-radius: 100px;
+	border: none;
+	
+	color: white;
+	background: #C0392B;
+	cursor: pointer;
+
+	@media (max-width: 1024px) { font-size: 1em; }
+}
+
+.subtle {
+	opacity: 0.5;
+}
