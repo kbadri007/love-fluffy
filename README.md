@@ -1,91 +1,39 @@
-# static-site-gulp-webpack-boilerplate
+# Love Fluffy
 
-> Drop-in [Gulp](http://gulpjs.com/) and [Webpack](https://webpack.js.org/) tasks for static site development.
+A simple web "game" where the goal is to love Fluffy the cat within a certain period of time by giving your love (hearts). Can you love Fluffy in time? :smirk:
 
-__Includes:__
+## Setup & Run
 
-- Image optimization (imagemin).
-- CSS/Sass processing and minification (sourcemaps, autoprefixer, clean-css).
-- JavaScript bundling and minification (webpack, babel-minify).
-- Delivery folder generation - clean and ready for distribution to staging, production, etc.
-- Fully configurable build process.
-
-## Installation
-
-__Step 1:__ Add global packages to your computer.
-
-- Required: [node & npm](https://nodejs.org/), [gulp-cli](http://gulpjs.com/)
-- Optional: [yarn](https://yarnpkg.com/)
-
-__Step 2:__ Install dependencies:
+__Step 1:__ Install dependencies:
 
 ```sh
 yarn
 ```
-
-## Configuration
-
-Default paths and plugin-configurations can be modified to your liking, but anything beyond that may require some Gulp file refactoring. Additional documentation provided via comments within `gulpfile.js`.
-
-An example file structure with [include-media](https://www.npmjs.com/package/include-media), [normalize.css](https://www.npmjs.com/package/normalize.css), [flexboxgrid](https://www.npmjs.com/package/flexboxgrid), and [jQuery](https://www.npmjs.com/package/jquery) (via node_modules) have been added to the project. To reduce build size, feel free to remove these extra files and packages if they go unused.
-
-```
-src/
-├── media/
-│   └── *.gif, *.jpg, *.png, *.svg
-├── scripts/
-│   └── *.js (or *.module.js - for exports only)
-├── styles/
-│   └── *.css, *.scss
-└── views/
-    └── *.html, *.ico, *.xml, etc...
+or 
+```sh
+npm install
 ```
 
-Do __NOT__ remove or rename the immediate folders within `src` unless you plan to modify the gulp configuration.
+__Step 2:__ Run build:
 
-## Development
-
-__Default script:__
-
-Processes source files, starts a BrowerSync server (defaults to port 3000), and watches for file changes.
+**Development**
 
 ```sh
 yarn start
 ```
-
-__Other scripts:__
-
-Deletes the generated output folder. This is your reset button.
-
+or
 ```sh
-yarn clean
+npm run start
 ```
 
-## Staging/Production
-
-__Default script:__
-
-Processes/minifies/moves files to the configured output folder for distribution.
+**Production**
 
 ```sh
 yarn build
 ```
-
-__Notes:__
-
-- Use a bang to avoid comments from being stripped out of stylesheets, ex: `/*! ... */`
-- Individual production tasks can be run seperately, ex:
-
+or
 ```sh
-# Move public files and (sub)folders.
-yarn build:public
-
-# Image optimization.
-yarn build:media
-
-# CSS/Sass processing and minification.
-yarn build:styles
-
-# JavaScript bundling and minification.
-yarn build:scripts
+npm run build
 ```
+
+All credits goes to Michael Schwobe for the [Gulp/Webpack boilerplate](https://github.com/michaelschwobe/static-site-gulp-webpack-boilerplate).
