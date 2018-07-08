@@ -13,7 +13,7 @@ import { Util } from './base';
 	// SVG selectors
 	//////////////////////
 	const getEl = (selector) => (document.getElementById(selector));
-	
+
 	const container = getEl('container');
 	const restart = getEl('restart');
 
@@ -61,7 +61,7 @@ import { Util } from './base';
 		}
 	};
 
-	let introAnim = new TimelineMax({ delay: 2 });
+	const introAnim = new TimelineMax({ delay: 2 });
 	introAnim.set([title, subtitle, instructions, counter, heart], { autoAlpha: 0 })
 		.set(counterText, { text: gameConfig.requiredHearts + ' left' })
 		.from(cat, 3, { y: 150, scale: 0.7, autoAlpha: 0 })
@@ -69,11 +69,11 @@ import { Util } from './base';
 		.to(subtitle, 1, { autoAlpha: 1 })
 		.to([instructions, heart, instructions, counter], 1, { autoAlpha: 1});
 
-	let timerStart = new TimelineMax({  paused: true, onComplete: gameOver });
+	const timerStart = new TimelineMax({  paused: true, onComplete: gameOver });
 	timerStart.set(progressBar, { width: 0 })
 		.from(timer, 2, { autoAlpha: 0 })
-		.to(progressBar, gameConfig.timeLimit, { 
-			width: '100%', 
+		.to(progressBar, gameConfig.timeLimit, {
+			width: '100%',
 			ease: Power0.easeNone,
 			onUpdateParams:['{self}'],
 			onUpdate: (tl) => {
@@ -82,7 +82,7 @@ import { Util } from './base';
 		}, 0)
 		.to(timer, 0.5, { autoAlpha: 0 });
 
-	let catHappy = new TimelineMax({
+	const catHappy = new TimelineMax({
 		paused: true,
 		repeat: 1,
 		ease: Power3.easeIn,
@@ -156,7 +156,7 @@ import { Util } from './base';
 		TweenMax.to(bubbleSad, 1, { autoAlpha: 1 });
 		TweenMax.from(bubbleSad, 1, { scale: 0.5 });
 		TweenMax.set(sadFace, { autoAlpha: 1 });
-		
+
 		// restart
 		TweenMax.from(restart, 2, { delay: 2, autoAlpha: 0, y: 20 });
 		restart.onclick = () => {window.location.reload()};
@@ -166,7 +166,7 @@ import { Util } from './base';
 	// Draggable Heart
 	//////////////////////
 
-	let heartEl = Draggable.create(heart, { type:'x,y', bounds: '#container'})[0];
+	const heartEl = Draggable.create(heart, { type:'x,y', bounds: '#container'})[0];
 	console.log(heartEl);
 
 	heartEl.addEventListener('press', function() {
@@ -207,7 +207,7 @@ import { Util } from './base';
 
 			TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 1, y: -10 });
 			TweenMax.to(bubbleHappy, 0.25, { delay: 0.25, y: 0 });
-			
+
 			heartEl.endDrag();
 		}
 	});
@@ -219,7 +219,7 @@ import { Util } from './base';
 	});
 
 	// HEART PULSE
-	let heartPulse = new TimelineMax();
+	const heartPulse = new TimelineMax();
 	heartPulse.to(shadow, 2, {
 		transformOrigin: 'center 45%',
 		scale: 2,
@@ -230,20 +230,20 @@ import { Util } from './base';
 	});
 
 	// HEART POP
-	let heartPop = new TimelineMax({ paused: true });
+	const heartPop = new TimelineMax({ paused: true });
 	heartPop.to(heart, 0.2, { transformOrigin: 'center', scale: 1.5 })
 		.to(heart, 0.3, { scale: 0, autoAlpha: 0 });
 
 	// CAT IDLE
 	TweenMax.set(tongue, { scaleY: 0 });
-	let catPawing = new TimelineMax({ repeat: -1 });
+	const catPawing = new TimelineMax({ repeat: -1 });
 	catPawing.to(armR, 0.5, { y: -5 })
 		.to(armL, 0.5, { y: -5 })
 		.to(armR, 0.5, { y: 0 }, 0.5)
 		.to(armL, 0.5, { y: 0 }, 1);
 
 	// TAIL CURL
-	let catCurl = new TimelineMax({
+	const catCurl = new TimelineMax({
 		repeat: -1,
 		yoyo: true,
 		repeatDelay: 0.5,
