@@ -52,7 +52,7 @@ import { Util } from './base';
 
 	const gameConfig = {
 		requiredHearts: 10,
-		timeLimit: 35,
+		timeLimit: 33,
 		praises: ['Great!', 'Awesome!', 'Good job!', 'Keep it up!', 'Nice!', 'Excellent!'],
 
 		get praise() {
@@ -96,6 +96,7 @@ import { Util } from './base';
 		.to(head, 0.3, { rotation: 0 })
 		.set(eyes, { autoAlpha: 1 });
 
+	let isGameOver = false;
 	let remaining = gameConfig.requiredHearts;
 
 	function nextTurn() {
@@ -108,11 +109,11 @@ import { Util } from './base';
 		TweenMax.to(instructions, 1, { delay: 2, autoAlpha: 0 });
 
 		// move heart randomly
-		let heartWidth = heart.getBBox().width;
-		let containWidth = container.offsetWidth - heartWidth;
-		let containHeight = container.offsetHeight - heartWidth;
-		let randX = Math.random()*containWidth - containWidth/2;
-		let randY = Math.random()*containHeight - containHeight/2;
+		const heartWidth = heart.getBBox().width;
+		const containWidth = container.offsetWidth - heartWidth;
+		const containHeight = container.offsetHeight - heartWidth;
+		const randX = Math.random()*containWidth - containWidth/2;
+		const randY = Math.random()*containHeight - containHeight/2;
 		TweenMax.to(heart, 0.3, { x: randX, y: randY });
 
 		if (remaining === gameConfig.requiredHearts-1) {
@@ -127,16 +128,19 @@ import { Util } from './base';
 	}
 
 	function denyWin() {
-		// stop it from being draggable
-		heartEl.disable();
+		isGameOver = true;
 
-		heartEl.target.onmouseover = heartEl.target.onclick = function(e) {
-			let cursorPos = { x: e.clientX, y: e.clientY };
-			let targPos = Util.getCenter(this);
-			let { x, y } = Util.getOffset(targPos, cursorPos);
+		heartEl.addEventListener('drag', function() {
+			setTimeout(heartEl.endDrag, Math.random()*750 - 500);
+		});
 
-			let randX = x + Math.random()*100 - 50;
-			let randY = y + Math.random()*100 - 50;
+		heartEl.target.onmouseover = function(e) {
+			const cursorPos = { x: e.clientX, y: e.clientY };
+			const targPos = Util.getCenter(this);
+			const { x, y } = Util.getOffset(targPos, cursorPos);
+
+			const randX = x + Math.random()*20 - 5;
+			const randY = y + Math.random()*20 - 5;
 
 			TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
 		}
@@ -201,7 +205,7 @@ import { Util } from './base';
 		});
 
 		// if heart hit cat
-		if (heartEl.hitTest(head, '50%') || heartEl.hitTest(torso, '50%')) {
+		if (!isGameOver && (heartEl.hitTest(head, '50%') || heartEl.hitTest(torso, '50%'))) {
 			heartPop.play(0);
 			catHappy.play(0);
 
