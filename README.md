@@ -8,7 +8,7 @@ __Step 1:__ Install dependencies:
 
 ```sh
 yarn
-// or
+# or
 npm install
 ```
 
@@ -18,7 +18,7 @@ __Step 2:__ Run build:
 
 ```sh
 yarn start
-// or
+# or
 npm run start
 ```
 
@@ -26,7 +26,7 @@ npm run start
 
 ```sh
 yarn build
-// or
+# or
 npm run build
 ```
 
