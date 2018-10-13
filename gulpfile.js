@@ -16,6 +16,7 @@ const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack-stream');
+const deploy = require('gulp-gh-pages');
 
 //------------------------------------------------------------------------------
 // Configuration.
@@ -53,6 +54,10 @@ const paths = {
     ],
     dest: `${dirs.output}/static/scripts`,
   },
+
+  deploy: {
+	branch: 'live'
+  }
 };
 
 // Plugin configurations.
@@ -210,6 +215,22 @@ gulp.task('scripts', () =>
 // Development.
 // Starts the browserSync server.
 gulp.task('serve', () => browserSync.init(pluginConfig.browserSync));
+
+//------------------------------------------------------------------------------
+// Deploy.
+//------------------------------------------------------------------------------
+
+// Builds & Deploys
+gulp.task('deploy', () => {
+  gulp
+    // Input.
+    .src(`${dirs.output}/**/*`)
+    // Deploy
+    .pipe(deploy({
+		branch: paths.deploy.branch
+	}));
+});
+
 
 //------------------------------------------------------------------------------
 // Watch.

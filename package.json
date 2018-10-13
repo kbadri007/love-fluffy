@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "Jason Yeung <contact@jasonyeung.me>",
-  "repository": "jayyeung/Love-Fluffy",
-  "homepage": "https://github.com/jayyeung/Love-Fluffy",
+  "repository": "jayyeung/love-fluffy",
+  "homepage": "https://github.com/jayyeung/love-fluffy",
   "keywords": [
     "autoprefixer",
     "babel",
@@ -24,7 +24,8 @@
     "build:views": "NODE_ENV=production gulp views",
     "build:media": "NODE_ENV=production gulp media",
     "build:styles": "NODE_ENV=production gulp styles",
-    "build:scripts": "NODE_ENV=production gulp scripts",
+	"build:scripts": "NODE_ENV=production gulp scripts",
+	"deploy": "gulp deploy",
     "clean": "gulp clean"
   },
   "dependencies": {
@@ -45,6 +46,7 @@
     "gulp-autoprefixer": "^4.1.0",
     "gulp-changed": "^3.2.0",
     "gulp-clean-css": "^3.9.2",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-imagemin": "^4.1.0",
     "gulp-noop": "^1.0.0",
     "gulp-notify": "^3.0.0",
