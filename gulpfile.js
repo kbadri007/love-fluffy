@@ -56,7 +56,7 @@ const paths = {
   },
 
   deploy: {
-	branch: 'live'
+	branch: 'gh-pages'
   }
 };
 
