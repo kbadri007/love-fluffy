@@ -51,7 +51,7 @@ import { Util } from './base';
 	//////////////////////
 	const gameConfig = {
 		requiredHearts: 10,
-		timeLimit: 33,
+		timeLimit: 30,
 		praises: ['Great!', 'Awesome!', 'Good job!', 'Keep it up!', 'Nice!', 'Excellent!'],
 
 		get praise() {
