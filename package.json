@@ -20,12 +20,12 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
-    "build": "NODE_ENV=production gulp",
-    "build:views": "NODE_ENV=production gulp views",
-    "build:media": "NODE_ENV=production gulp media",
-    "build:styles": "NODE_ENV=production gulp styles",
-	"build:scripts": "NODE_ENV=production gulp scripts",
-	"deploy": "set NODE_ENV=production gulp && gulp deploy",
+    "build": "set NODE_ENV=production gulp",
+    "build:views": "set NODE_ENV=production gulp views",
+    "build:media": "set NODE_ENV=production gulp media",
+    "build:styles": "set NODE_ENV=production gulp styles",
+	"build:scripts": "set NODE_ENV=production gulp scripts",
+	"deploy": "set NODE_ENV=production gulp clean && gulp && gulp deploy",
     "clean": "gulp clean"
   },
   "dependencies": {
