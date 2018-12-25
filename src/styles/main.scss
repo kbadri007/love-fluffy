@@ -19,9 +19,66 @@
 
 	@media (max-width: 1024px) { font-size: 14px; }
 	@media (max-width: 700px) { font-size: 12px; }
+
+	// prevent pull-up refresh on mobile
+	overscroll-behavior-y: contain;
 }
 
 // SVG
+#loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: white;
+	position: fixed;
+	top: 0; bottom: 0;
+	left: 0; right: 0;
+	z-index: 10000;
+
+	text-align: center;
+
+	&-title {
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #7E7E7E;
+	}
+
+	&-icon {
+		width: 5vw;
+		height: auto;
+		min-width: 6rem;
+	}
+
+	@keyframes loadIn {
+		0%, 10% { transform: translateY(0.05em); opacity: 0; }
+		30%, 60% { transform: translateY(0); opacity: 1; }
+		100% { transform: translateY(-0.15em); opacity: 0; }
+	}
+
+	@keyframes head {
+		0% { transform: translateY(0); }
+		100% { transform: translateY(-0.1em); }
+	}
+
+	@keyframes shadow {
+		0% { transform: scaleX(1); }
+		100% { transform: scaleX(1.15); opacity: 0.5; }
+	}
+
+	&-head { animation: head 2s ease-in-out infinite alternate; }
+	&-shadow {
+		animation: shadow 2s ease-in-out infinite alternate;
+		transform-origin: 132px 0;
+	}
+
+	&-heart { animation: loadIn 2.5s 0.3s infinite; }
+	&-heart-left { animation: loadIn 2.5s infinite; }
+	&-heart-right { animation: loadIn 2.5s 0.2s infinite; }
+}
+
 #container {
 	padding: 3rem 1rem;
 
@@ -41,23 +98,22 @@
 	font-family: 'Noto Serif', serif;
 	font-size: 2.5rem;
 	font-weight: normal;
-	
+
 	text-transform: none;
 	color: #C0392B;
 }
 
 #instructions {
+	@extend #loading-title;
 	margin-bottom: 1.5em;
-	font-weight: bold;
-	letter-spacing: 0.1em;
 	color: #EB6C5E;
-	text-transform: uppercase;
 }
 
 #timer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 
 	position: fixed;
 	left: 0; right: 0;
@@ -68,7 +124,7 @@
 		position: absolute;
 		left: 0;
 		top: 0; bottom: 0;
-	
+
 		background: rgba(black, 0.05);
 	}
 
@@ -111,7 +167,7 @@
 	padding: 1em 2em;
 	border-radius: 100px;
 	border: none;
-	
+
 	color: white;
 	background: #C0392B;
 	cursor: pointer;

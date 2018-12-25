@@ -1,19 +1,19 @@
 import { TweenMax, TimelineMax } from 'gsap/TweenMax';
-import { Power3, Power0, Sine } from 'gsap/EasePack';
+import { Power3, Power0 } from 'gsap/EasePack';
 
 import Draggable from 'gsap/Draggable';
-import AttrPlugin from 'gsap/AttrPlugin';
-import TextPlugin from 'gsap/TextPlugin';
+import 'gsap/AttrPlugin';
+import 'gsap/TextPlugin';
 
 import { Util } from './base';
 
 (() => {
-
 	//////////////////////
 	// SVG selectors
 	//////////////////////
 	const getEl = (selector) => (document.getElementById(selector));
 
+	const loading = getEl('loading');
 	const container = getEl('container');
 	const restart = getEl('restart');
 
@@ -49,7 +49,6 @@ import { Util } from './base';
 	//////////////////////
 	// Game
 	//////////////////////
-
 	const gameConfig = {
 		requiredHearts: 10,
 		timeLimit: 33,
@@ -61,9 +60,10 @@ import { Util } from './base';
 		}
 	};
 
-	const introAnim = new TimelineMax({ delay: 2 });
+	const introAnim = new TimelineMax({ delay: 1 });
 	introAnim.set([title, subtitle, instructions, counter, heart], { autoAlpha: 0 })
 		.set(counterText, { text: gameConfig.requiredHearts + ' left' })
+		.to(loading, 0.5, { autoAlpha: 0 })
 		.from(cat, 3, { y: 150, scale: 0.7, autoAlpha: 0 })
 		.to(title, 1, { autoAlpha: 1 }, '-=2')
 		.to(subtitle, 1, { autoAlpha: 1 })
@@ -130,11 +130,8 @@ import { Util } from './base';
 	function denyWin() {
 		isGameOver = true;
 
-		heartEl.addEventListener('drag', function() {
-			setTimeout(heartEl.endDrag, Math.random()*750 - 500);
-		});
-
-		heartEl.target.onmouseover = function(e) {
+		heartEl.disable();
+		heartEl.target.onmouseover = heartEl.target.onclick = function(e) {
 			const cursorPos = { x: e.clientX, y: e.clientY };
 			const targPos = Util.getCenter(this);
 			const { x, y } = Util.getOffset(targPos, cursorPos);
@@ -171,7 +168,6 @@ import { Util } from './base';
 	//////////////////////
 
 	const heartEl = Draggable.create(heart, { type:'x,y', bounds: '#container'})[0];
-	console.log(heartEl);
 
 	heartEl.addEventListener('press', function() {
 		heartPulse.pause();
