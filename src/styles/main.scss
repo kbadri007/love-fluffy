@@ -19,7 +19,9 @@
 
 	@media (max-width: 1024px) { font-size: 14px; }
 	@media (max-width: 700px) { font-size: 12px; }
+}
 
+body {
 	// prevent pull-up refresh on mobile
 	overscroll-behavior-y: contain;
 }
