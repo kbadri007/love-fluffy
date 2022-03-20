@@ -1,6 +1,6 @@
-# Love Fluffy
+# Love papa is forked and modified from Love Fluffy
 
-A simple web "game" where the goal is to love Fluffy the cat within a certain period of time by giving your love (hearts). Can you love Fluffy in time? :smirk:
+A simple web "game" where the goal is to love the papa within a certain period of time by giving your love (hearts). Can you love Papa in time? :smirk:
 
 ## Setup & Run
 
@@ -30,4 +30,4 @@ yarn build
 npm run build
 ```
 
-All credits goes to Michael Schwobe for the [Gulp/Webpack boilerplate](https://github.com/michaelschwobe/static-site-gulp-webpack-boilerplate).
+All credits goes to  jsonyeung for [love-fluffy](https://github.com/jsonyeung/love-fluffy) & Michael Schwobe for the [Gulp/Webpack boilerplate](https://github.com/michaelschwobe/static-site-gulp-webpack-boilerplate).
