@@ -24,8 +24,8 @@
     "build:views": "set NODE_ENV=production gulp views",
     "build:media": "set NODE_ENV=production gulp media",
     "build:styles": "set NODE_ENV=production gulp styles",
-	"build:scripts": "set NODE_ENV=production gulp scripts",
-	"deploy": "set NODE_ENV=production gulp clean && gulp && gulp deploy",
+    "build:scripts": "set NODE_ENV=production gulp scripts",
+    "deploy": "set NODE_ENV=production gulp clean && gulp && gulp deploy",
     "clean": "gulp clean"
   },
   "dependencies": {
