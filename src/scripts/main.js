@@ -33,7 +33,7 @@ import { Util } from './base';
 	// const bubbleHappy = getEl('happy-bubble');
 	// const bubbleSad = getEl('sad-bubble');
 
-	const cat = getEl('papa');
+	const papa = getEl('papa');
 	const head = getEl('head');
 	const torso = getEl('torso');
 	const armR = getEl('arm-right');
@@ -41,7 +41,7 @@ import { Util } from './base';
 	const eyes = getEl('eyes');
 	const eyeRP = getEl('eye-right-pupil');
 	const eyeLP = getEl('eye-left-pupil');
-	const tongue = getEl('tongue');
+	//const tongue = getEl('tongue');
 	// const tail = getEl('tail');
 	// const tailCurl = getEl('tail-curl');
 	// const sadFace = getEl('sad-face');
@@ -64,7 +64,7 @@ import { Util } from './base';
 	introAnim.set([title, subtitle, instructions, counter, heart], { autoAlpha: 0 })
 		.set(counterText, { text: gameConfig.requiredHearts + ' left' })
 		.to(loading, 0.5, { autoAlpha: 0 })
-		.from(cat, 3, { y: 150, scale: 0.7, autoAlpha: 0 })
+		.from(papa, 3, { y: 150, scale: 0.7, autoAlpha: 0 })
 		.to(title, 1, { autoAlpha: 1 }, '-=2')
 		.to(subtitle, 1, { autoAlpha: 1 })
 		.to([instructions, heart, instructions, counter], 1, { autoAlpha: 1});
@@ -82,25 +82,25 @@ import { Util } from './base';
 		}, 0)
 		.to(timer, 0.5, { autoAlpha: 0 });
 
-	const catHappy = new TimelineMax({
-		paused: true,
-		repeat: 1,
-		ease: Power3.easeIn,
-		onComplete: nextTurn
-	});
-	catHappy.set(eyes, { autoAlpha: 0 })
-		.set(head, { transformOrigin: 'center bottom' })
-		.to(head, 0.3, { rotation: 15 })
-		.to(head, 0.3, { rotation: 0 })
-		.to(head, 0.3, { rotation: -15 })
-		.to(head, 0.3, { rotation: 0 })
-		.set(eyes, { autoAlpha: 1 });
+	// const catHappy = new TimelineMax({
+	// 	paused: true,
+	// 	repeat: 1,
+	// 	ease: Power3.easeIn,
+	// 	onComplete: nextTurn
+	// });
+	// catHappy.set(eyes, { autoAlpha: 0 })
+	// 	.set(head, { transformOrigin: 'center bottom' })
+	// 	.to(head, 0.3, { rotation: 15 })
+	// 	.to(head, 0.3, { rotation: 0 })
+	// 	.to(head, 0.3, { rotation: -15 })
+	// 	.to(head, 0.3, { rotation: 0 })
+	// 	.set(eyes, { autoAlpha: 1 });
 
 	let isGameOver = false;
 	let remaining = gameConfig.requiredHearts;
 
 	function nextTurn() {
-		TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 0, y: 20 });
+		// TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 0, y: 20 });
 		remaining--;
 
 		TweenMax.set(instructions, { text: gameConfig.praise, autoAlpha: 1 });
@@ -145,18 +145,18 @@ import { Util } from './base';
 
 	function gameOver() {
 		heartPop.play(0);
-		catHappy.stop().seek(0);
+	//	catHappy.stop().seek(0);
 
-		TweenMax.set(title, { text: 'You made a kitten cry' });
-		TweenMax.set(subtitle, {text: 'Fluffy is now heartbroken…' });
+		TweenMax.set(title, { text: 'You should not make papa cry' });
+		TweenMax.set(subtitle, {text: 'papa needs more love…' });
 		TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
 		TweenMax.to(subtitle, 1, { marginBottom: 0 });
 
-		// Cat sad
-		TweenMax.to(cat, 2, { transformOrigin: 'center bottom', scale: 1.25, x: '-25%', y: '50%' });
-		TweenMax.to(bubbleSad, 1, { autoAlpha: 1 });
-		TweenMax.from(bubbleSad, 1, { scale: 0.5 });
-		TweenMax.set(sadFace, { autoAlpha: 1 });
+		// // Cat sad
+		// TweenMax.to(cat, 2, { transformOrigin: 'center bottom', scale: 1.25, x: '-25%', y: '50%' });
+		// TweenMax.to(bubbleSad, 1, { autoAlpha: 1 });
+		// TweenMax.from(bubbleSad, 1, { scale: 0.5 });
+		// TweenMax.set(sadFace, { autoAlpha: 1 });
 
 		// restart
 		TweenMax.from(restart, 2, { delay: 2, autoAlpha: 0, y: 20 });
@@ -203,10 +203,10 @@ import { Util } from './base';
 		// if heart hit cat
 		if (!isGameOver && (heartEl.hitTest(head, '50%') || heartEl.hitTest(torso, '50%'))) {
 			heartPop.play(0);
-			catHappy.play(0);
+			// catHappy.play(0);
 
-			TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 1, y: -10 });
-			TweenMax.to(bubbleHappy, 0.25, { delay: 0.25, y: 0 });
+			// TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 1, y: -10 });
+			// TweenMax.to(bubbleHappy, 0.25, { delay: 0.25, y: 0 });
 
 			heartEl.endDrag();
 		}
@@ -235,21 +235,21 @@ import { Util } from './base';
 		.to(heart, 0.3, { scale: 0, autoAlpha: 0 });
 
 	// CAT IDLE
-	TweenMax.set(tongue, { scaleY: 0 });
-	const catPawing = new TimelineMax({ repeat: -1 });
-	catPawing.to(armR, 0.5, { y: -5 })
-		.to(armL, 0.5, { y: -5 })
-		.to(armR, 0.5, { y: 0 }, 0.5)
-		.to(armL, 0.5, { y: 0 }, 1);
+	// TweenMax.set(tongue, { scaleY: 0 });
+	// const catPawing = new TimelineMax({ repeat: -1 });
+	// catPawing.to(armR, 0.5, { y: -5 })
+	// 	.to(armL, 0.5, { y: -5 })
+	// 	.to(armR, 0.5, { y: 0 }, 0.5)
+	// 	.to(armL, 0.5, { y: 0 }, 1);
 
-	// TAIL CURL
-	const catCurl = new TimelineMax({
-		repeat: -1,
-		yoyo: true,
-		repeatDelay: 0.5,
-		ease: Power3.easeInOut
-	});
-	catCurl.to(tailCurl, 0.5, { attr:{'stroke-dashoffset': 50} })
-		.to(tail, 0.5, { x: 35 }, 0);
+	// // TAIL CURL
+	// const catCurl = new TimelineMax({
+	// 	repeat: -1,
+	// 	yoyo: true,
+	// 	repeatDelay: 0.5,
+	// 	ease: Power3.easeInOut
+	// });
+	// catCurl.to(tailCurl, 0.5, { attr:{'stroke-dashoffset': 50} })
+	// 	.to(tail, 0.5, { x: 35 }, 0);
 
 })();

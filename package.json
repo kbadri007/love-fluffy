@@ -1,11 +1,11 @@
 {
-  "name": "love-fluffy",
+  "name": "love-papa",
   "description": "A quick simple web game using plain JavaScript and GSAP",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "Jason Yeung <contact@jasonyeung.me>",
-  "repository": "jayyeung/love-fluffy",
-  "homepage": "https://github.com/jayyeung/love-fluffy",
+  "author": "Badri <kbadri007@gmail.com>",
+  "repository": "kbadri007/love-papa",
+  "homepage": "https://github.com/kbadri007/love-papa",
   "keywords": [
     "autoprefixer",
     "babel",
