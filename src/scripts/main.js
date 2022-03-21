@@ -30,10 +30,10 @@ import { Util } from './base';
 	const heart = getEl('heart');
 	const shadow = getEl('heart-shadow');
 
-	const bubbleHappy = getEl('happy-bubble');
-	const bubbleSad = getEl('sad-bubble');
+	// const bubbleHappy = getEl('happy-bubble');
+	// const bubbleSad = getEl('sad-bubble');
 
-	const cat = getEl('cat');
+	const cat = getEl('papa');
 	const head = getEl('head');
 	const torso = getEl('torso');
 	const armR = getEl('arm-right');
@@ -42,17 +42,17 @@ import { Util } from './base';
 	const eyeRP = getEl('eye-right-pupil');
 	const eyeLP = getEl('eye-left-pupil');
 	const tongue = getEl('tongue');
-	const tail = getEl('tail');
-	const tailCurl = getEl('tail-curl');
-	const sadFace = getEl('sad-face');
+	// const tail = getEl('tail');
+	// const tailCurl = getEl('tail-curl');
+	// const sadFace = getEl('sad-face');
 
 	//////////////////////
 	// Game
 	//////////////////////
 	const gameConfig = {
 		requiredHearts: 10,
-		timeLimit: 30,
-		praises: ['Great!', 'Awesome!', 'Good job!', 'Keep it up!', 'Nice!', 'Excellent!'],
+		timeLimit: 60,
+		praises: ['WOW!', 'Awesome!', 'Some more!', 'I love you too!', 'Nice!', 'You are the sweetest!'],
 
 		get praise() {
 			let rand = Math.floor(Math.random() * this.praises.length);
