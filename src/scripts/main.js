@@ -51,7 +51,7 @@ import { Util } from './base';
 	//////////////////////
 	const gameConfig = {
 		requiredHearts: 10,
-		timeLimit: 60,
+		timeLimit:60,
 		praises: ['WOW!', 'Awesome!', 'Some more!', 'I love you too!', 'Nice!', 'You are the sweetest!'],
 
 		get praise() {
@@ -82,19 +82,19 @@ import { Util } from './base';
 		}, 0)
 		.to(timer, 0.5, { autoAlpha: 0 });
 
-	// const catHappy = new TimelineMax({
-	// 	paused: true,
-	// 	repeat: 1,
-	// 	ease: Power3.easeIn,
-	// 	onComplete: nextTurn
-	// });
-	// catHappy.set(eyes, { autoAlpha: 0 })
-	// 	.set(head, { transformOrigin: 'center bottom' })
-	// 	.to(head, 0.3, { rotation: 15 })
-	// 	.to(head, 0.3, { rotation: 0 })
-	// 	.to(head, 0.3, { rotation: -15 })
-	// 	.to(head, 0.3, { rotation: 0 })
-	// 	.set(eyes, { autoAlpha: 1 });
+	const papaHappy = new TimelineMax({
+		paused: true,
+		repeat: 1,
+		ease: Power3.easeIn,
+		onComplete: nextTurn
+	});
+	papaHappy.set(eyes, { autoAlpha: 0 })
+		.set(head, { transformOrigin: 'center bottom' })
+		.to(head, 0.3, { rotation: 15 })
+		.to(head, 0.3, { rotation: 0 })
+		.to(head, 0.3, { rotation: -15 })
+		.to(head, 0.3, { rotation: 0 })
+		.set(eyes, { autoAlpha: 1 });
 
 	let isGameOver = false;
 	let remaining = gameConfig.requiredHearts;
@@ -140,12 +140,16 @@ import { Util } from './base';
 			const randY = y + Math.random()*20 - 5;
 
 			TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
+			TweenMax.set(title, { text: 'I am a girl papa' });
+			TweenMax.set(subtitle, {text: 'papa is a Happy girl…' });
+			TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
+			TweenMax.to(subtitle, 1, { marginBottom: 0 });
 		}
 	}
 
 	function gameOver() {
 		heartPop.play(0);
-	//	catHappy.stop().seek(0);
+		papaHappy.stop().seek(0);
 
 		TweenMax.set(title, { text: 'You should not make papa cry' });
 		TweenMax.set(subtitle, {text: 'papa needs more love…' });
@@ -203,7 +207,7 @@ import { Util } from './base';
 		// if heart hit cat
 		if (!isGameOver && (heartEl.hitTest(head, '50%') || heartEl.hitTest(torso, '50%'))) {
 			heartPop.play(0);
-			// catHappy.play(0);
+			papaHappy.play(0);
 
 			// TweenMax.to(bubbleHappy, 0.25, { autoAlpha: 1, y: -10 });
 			// TweenMax.to(bubbleHappy, 0.25, { delay: 0.25, y: 0 });
