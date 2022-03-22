@@ -88,7 +88,7 @@ import { Util } from './base';
 		ease: Power3.easeIn,
 		onComplete: nextTurn
 	});
-	papaHappy.set(eyes, { autoAlpha: 0 })
+	papaHappy.set(eyes, { autoAlpha: 1 })
 		.set(head, { transformOrigin: 'center bottom' })
 		.to(head, 0.3, { rotation: 15 })
 		.to(head, 0.3, { rotation: 0 })
@@ -124,10 +124,10 @@ import { Util } from './base';
 		// make heart reaapear
 		if (timerStart.isActive()) heartPop.reverse();
 
-		if (remaining <= 1) denyWin();
+		if (remaining < 1) papaWin();
 	}
 
-	function denyWin() {
+	function papaWin() {
 		isGameOver = true;
 
 		heartEl.disable();
@@ -204,7 +204,7 @@ import { Util } from './base';
 			scaleY: 1
 		});
 
-		// if heart hit cat
+		// if heart hit papa
 		if (!isGameOver && (heartEl.hitTest(head, '50%') || heartEl.hitTest(torso, '50%'))) {
 			heartPop.play(0);
 			papaHappy.play(0);
