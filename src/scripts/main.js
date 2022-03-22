@@ -50,7 +50,7 @@ import { Util } from './base';
 	// Game
 	//////////////////////
 	const gameConfig = {
-		requiredHearts: 10,
+		requiredHearts:2,
 		timeLimit:45,
 		praises: ['WOW!', 'Awesome!', 'Some more!', 'I love you too!', 'Nice!', 'You are the sweetest!'],
 
@@ -122,20 +122,19 @@ import { Util } from './base';
 		}
 
 		// make heart reaapear
-		if (timerStart.isActive()) heartPop.reverse();
+		if (remaining >= 1 && timerStart.isActive()) heartPop.reverse();
 
 		if (remaining < 1) papaWin();
 	}
 
 	function papaWin() {
+		//TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
+		TweenMax.set(title, { text: 'I am a girl papa' });
+		TweenMax.set(subtitle, {text: 'papa is a Happy girl…' });
+		TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
+		TweenMax.to(subtitle, 1, { marginBottom: 0 });
+		timerStart.pause();
 		isGameOver = true;
-		papaHappy.stop().seek(0);
-			TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
-			TweenMax.set(title, { text: 'I am a girl papa' });
-			TweenMax.set(subtitle, {text: 'papa is a Happy girl…' });
-			TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
-			TweenMax.to(subtitle, 1, { marginBottom: 0 });
-		
 		heartEl.disable();
 		heartEl.target.onmouseover = heartEl.target.onclick = function(e) {
 			const cursorPos = { x: e.clientX, y: e.clientY };
@@ -188,7 +187,7 @@ import { Util } from './base';
 		let rotate = Math.atan2(y, x);
 
 		// Don't look if it's too far
-		if (dist > 300) {
+		if (dist > 600) {
 			TweenMax.to([eyeRP, eyeLP], 0.3, { rotation: 0, x: 0 });
 			TweenMax.to(tongue, 0.3, {scaleY: 0});
 			return;
