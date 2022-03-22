@@ -50,7 +50,7 @@ import { Util } from './base';
 	// Game
 	//////////////////////
 	const gameConfig = {
-		requiredHearts:2,
+		requiredHearts:10,
 		timeLimit:45,
 		praises: ['WOW!', 'Awesome!', 'Some more!', 'I love you too!', 'Nice!', 'You are the sweetest!'],
 
