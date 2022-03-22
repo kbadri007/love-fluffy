@@ -129,7 +129,13 @@ import { Util } from './base';
 
 	function papaWin() {
 		isGameOver = true;
-
+		papaHappy.stop().seek(0);
+			TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
+			TweenMax.set(title, { text: 'I am a girl papa' });
+			TweenMax.set(subtitle, {text: 'papa is a Happy girl…' });
+			TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
+			TweenMax.to(subtitle, 1, { marginBottom: 0 });
+		
 		heartEl.disable();
 		heartEl.target.onmouseover = heartEl.target.onclick = function(e) {
 			const cursorPos = { x: e.clientX, y: e.clientY };
@@ -139,11 +145,7 @@ import { Util } from './base';
 			const randX = x + Math.random()*20 - 5;
 			const randY = y + Math.random()*20 - 5;
 
-			TweenMax.to(this, 0.2, { x: '+='+randX, y: '+='+randY });
-			TweenMax.set(title, { text: 'I am a girl papa' });
-			TweenMax.set(subtitle, {text: 'papa is a Happy girl…' });
-			TweenMax.to([title, subtitle], 1, { autoAlpha: 1 });
-			TweenMax.to(subtitle, 1, { marginBottom: 0 });
+
 		}
 	}
 
